@@ -1,0 +1,78 @@
+:root {
+    --neon-clr: rgb(35, 35, 243);
+    --neon-bg: rgb(13, 13, 39);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--neon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+button {
+    font-size: 2rem;
+    position: relative;
+    display: inline-block;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--neon-clr);
+    font-weight: bold;
+    border: var(--neon-clr) .15em solid;
+    padding: 0.08em 1em;
+    cursor: pointer;
+    border-radius: 10px;
+    background: var(--neon-bg);
+    text-shadow: 0 0 .22em var(--neon-clr);
+    box-shadow: inset 0 0 .5em 0 var(--neon-clr),
+        0 0 .5em 0 var(--neon-clr);
+}
+
+button::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--neon-clr);
+    transform: perspective(2em) scale(1, .4) rotateX(50deg);
+    filter: blur(.7em);
+    opacity: 0.7;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    transform: opacity 100ms linear;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 2em 0.5em var(--neon-clr);
+    opacity: 0;
+    transition: opacity 100ms linear;
+}
+
+button:hover,
+button:focus {
+    background: var(--neon-clr);
+    color: var(--neon-bg);
+    text-shadow: none;
+}
+
+button:hover::before {
+    opacity: 1;
+}
+
+button:hover::after {
+    opacity: 1;
+}
+
